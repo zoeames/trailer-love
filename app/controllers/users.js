@@ -41,3 +41,24 @@ exports.authenticate = function(req, res){
   });
 };
 
+exports.profile = function(req,res){
+  res.render('users/profile');
+};
+
+exports.edit = function(req,res){
+  res.render('users/edit');
+};
+
+exports.update = function(req,res){
+  console.log('req.body>>>>>>>>>>', req.body);
+  console.log('res.locals.user>>>>>>>>>', res.locals.user);
+    res.locals.user.save(req.body, function(){
+  res.redirect('/profile');
+  });
+};
+
+exports.index = function(req,res){
+  User.find({isPublic:true}, function(err, users){
+    res.render('users/index', {users:users});
+  });
+};

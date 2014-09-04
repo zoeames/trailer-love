@@ -28,6 +28,18 @@ describe('users', function(){
     });
   });
 
+ describe('get /register', function(){
+    it('should show the register page', function(done){
+      request(app)
+      .get('/register')
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('Register');
+        done();
+      });
+    });
+  });
+  
   describe('get /register', function(){
     it('should show the register page', function(done){
       request(app)
@@ -35,6 +47,44 @@ describe('users', function(){
       .end(function(err, res){
         expect(res.status).to.equal(200);
         expect(res.text).to.include('Register');
+        done();
+      });
+    });
+  });
+
+ describe('get /profile/edit', function(){
+    it('should show the edit profile page', function(done){
+      request(app)
+      .get('/profile/edit')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        done();
+      });
+    });
+  });
+
+  describe('get /profile', function(){
+    it('should show the profile', function(done){
+      request(app)
+      .get('/profile')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        done();
+      });
+    });
+  });
+
+  describe('put /profile', function(){
+    it('should edit the profile', function(done){
+      request(app)
+      .put('/profile')
+      .send('_method=put&visible=private&email=bob%40aol.com&phone=5555555555&photo=bob.jpg&tagline=here%27s+bob.+&about=Hey.+I%27m+a+fun+guy.+Let%27s+have+mountain+dew+and+get+to+know+each+other%21')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/profile');
         done();
       });
     });
