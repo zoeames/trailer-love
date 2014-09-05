@@ -9,7 +9,9 @@ var morgan         = require('morgan'),
     security       = require('../lib/security'),
     debug          = require('../lib/debug'),
     home           = require('../controllers/home'),
-    users          = require('../controllers/users');
+    users          = require('../controllers/users'),
+    gifts          = require('../controllers/gifts'),
+    cart          = require('../controllers/cart');
 
 module.exports = function(app, express){
   app.use(morgan('dev'));
@@ -31,12 +33,11 @@ module.exports = function(app, express){
   app.use(security.bounce);
   app.delete('/logout', users.logout);
 
-  app.get('/profile', users.profile);
-  app.get('/profile/edit', users.edit);
-  app.put('/profile', users.update);
-  app.get('/index', users.index);
-  app.get('/users/:id', users.show);
-
+  app.get('/gifts', gifts.index);
+  app.post('/cart', cart.add);
+  app.get('/cart', cart.index);
+  app.delete('/cart', cart.destroy);
+  app.post('/charge', cart.purchase);
   console.log('Express: Routes Loaded');
 };
 
