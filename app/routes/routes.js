@@ -46,7 +46,7 @@ module.exports = function(app, express){
   app.post('/charge', cart.purchase);
 
   app.get('/users/:email', users.client);
-  app.post('/messages/:userId', users.send);
+ // app.post('/messages/:userId', users.send);
   app.get('/messages/:msgId', users.message);
   app.get('/messages', users.messages);
 
