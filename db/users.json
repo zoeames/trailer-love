@@ -43,7 +43,7 @@
   "looks" : "fluffy",
   "eye color" : "brown",
   "hair color" : "brown",
-  "gifts" : [{"_id":"100000000000000000000001", "giverId":"000000000000000000000001"}],
+  "gifts" : [{"_id":"a00000000000000000000001", "giverId":"000000000000000000000001"}],
   "profilePic" : "http://media0.giphy.com/media/4LYu6AdbJmpri/200_s.gif",
   "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2"
 }
