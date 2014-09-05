@@ -46,6 +46,7 @@ User.find = function(filter, cb){
 };
 
 User.findOne = function(filter, cb){
+  console.log('filter>>>>>>>>>>>>>', filter);
   User.collection.findOne(filter, cb);
 };
 

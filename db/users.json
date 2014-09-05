@@ -4,6 +4,7 @@
   "location" : {"name":"Nashville, TN USA", "lat":36.1866405, "lng":-86.7852455},
   "email" : "bubs@aol.com",
   "phone" : 5551231234,
+  "isPublic" : true,
   "photos": [
     "http://assets.sbnation.com/assets/2235525/Bubs_medium.jpg",
     "https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xaf1/v/t1.0-9/429944_359149577439718_1122891575_n.jpg?oh=55a1e86cb7ac02c50b0cee474acdd856&oe=545C46B1&__gda__=1416584288_9a820a4829374a27f6f720ef53255301",
@@ -15,7 +16,6 @@
   "aboutMe" : "I like kitties and partying!",
   "occupants": ["kitty 1", "kitty 2", "kitty 3"],
   "looks" : "chunky",
-  "height" : 6, //ft
   "eye color" : "blue",
   "hair color" : "blonde",
   "gifts" : [{"_id":"000000000000000000000008", "giverId":"000000000000000000000002"}],
@@ -29,6 +29,7 @@
   "location" : {"name":"Dickson, TN USA", "lat":36.0592365, "lng":-87.3713995},
   "email" : "ricky@aol.com",
   "phone" : 5551231235,
+  "isPublic" : true,
   "photos": [
     "http://img2.wikia.nocookie.net/__cb20091104160712/trailerpark/images/0/00/Ricky.jpg",
     "http://people.rit.edu/ajs5329/140/project2/media/rickyy.jpeg",
@@ -39,8 +40,7 @@
   "trailerSize" : {"sqFeet":40, "bedrooms":1, "bath":1},
   "aboutMe" : "I like stealing stuff and drinking and smoking",
   "occupants": ["rat"],
-  "looks" : "chunky",
-  "height" : 6, //ft
+  "looks" : "fluffy",
   "eye color" : "brown",
   "hair color" : "brown",
   "gifts" : [{"_id":"100000000000000000000001", "giverId":"000000000000000000000001"}],
@@ -54,6 +54,7 @@
   "location" : {"name":"Columbia, TN USA", "lat":35.6439419, "lng":-87.0128069},
   "email" : "julian@aol.com",
   "phone" : 5551231236,
+  "isPublic" : true,
   "photos": [
     "http://img3.wikia.nocookie.net/__cb20091104025647/trailerpark/images/0/0e/Julian2.gif",
     "https://gs1.wpc.edgecastcdn.net/8061DD/s3_videos_production/thumbnails/37840/drOT8eJ-uMYnuxZji8yeQQ.jpg",
@@ -64,8 +65,7 @@
   "trailerSize" : {"sqFeet":200, "bedrooms":1, "bath":1},
   "aboutMe" : "I like alcohol and women!",
   "occupants": ["Julian"],
-  "looks" : "muscular",
-  "height" : 6, //ft
+  "looks" : "lean and mean",
   "eye color" : "brown",
   "hair color" : "black",
   "gifts" : [{"_id":"000000000000000000000001", "giverId":"000000000000000000000002"}],

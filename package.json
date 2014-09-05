@@ -42,6 +42,7 @@
     "jade": "^1.6.0",
     "less-middleware": "^1.0.4",
     "mailgun": "^0.4.2",
+    "mailgun-js": "^0.5.4",
     "moment": "^2.8.2",
     "mongodb": "^1.4.10",
     "morgan": "^1.3.0",

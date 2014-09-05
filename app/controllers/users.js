@@ -64,11 +64,14 @@ exports.index = function(req,res){
 };
 
 exports.show = function(req,res){
+  console.log('req.params.userId>>>>>>>>>>>>>', req.params.userId);
   User.findOne({_id:req.params.userId, isPublic:true}, function(err, client){
+    console.log('client>>>>>>>>>>>>>', client);
     if(client){
-      res.render('users/client', {client:client});
+      res.render('users/user', {client:client});
     }else{
-      res.redirect('/users');
+      res.redirect('/index');
     }
   });
 };
+

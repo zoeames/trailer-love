@@ -2,7 +2,7 @@
 
 'use strict';
 
-process.env.DB   = 'template-test';
+process.env.DB   = 'trailer-test';
 
 var expect  = require('chai').expect,
     cp      = require('child_process'),
@@ -19,7 +19,7 @@ describe('users', function(){
     cp.execFile(__dirname + '/../scripts/clean-db.sh', [process.env.DB], {cwd:__dirname + '/../scripts'}, function(err, stdout, stderr){
       request(app)
       .post('/login')
-      .send('email=bob@aol.com')
+      .send('email=bubs@aol.com')
       .send('password=1234')
       .end(function(err, res){
         cookie = res.headers['set-cookie'][0];
@@ -89,5 +89,30 @@ describe('users', function(){
       });
     });
   });
+
+describe('get /index', function(){
+    it('should show all public users', function(done){
+      request(app)
+      .get('/index')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        done();
+      });
+    });
+  });
+  
+  describe('get /users/:UserId', function(){
+    it('should show specific user profile', function(done){
+      request(app)
+      .get('/users/000000000000000000000002')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        done();
+      });
+    });
+  });
+
 });
 
