@@ -40,7 +40,6 @@ User.authenticate = function(o, cb){
   });
 };
 
-
 User.find = function(filter, cb){
   User.collection.find(filter).toArray(cb);
 };
@@ -59,13 +58,14 @@ User.prototype.messages = function(cb){
 };
 
 User.prototype.save = function(o, cb){
+  console.log('o in save method>>>>>>>>>>>>>>>>>>>>>', o);
   var properties = Object.keys(o),
       self       = this;
 
   properties.forEach(function(property){
     switch(property){
-      case 'visible':
-        self.isVisible = o[property] === 'public';
+      case 'public':
+        self.isPublic = o[property] === 'public';
         break;
       default:
         self[property] = o[property];
