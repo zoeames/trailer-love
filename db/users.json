@@ -15,7 +15,6 @@
   "aboutMe" : "I like kitties and partying!",
   "occupants": ["kitty 1", "kitty 2", "kitty 3"],
   "looks" : "chunky",
-  "height" : 6, //ft
   "eye color" : "blue",
   "hair color" : "blonde",
   "gifts" : [{"_id":"000000000000000000000008", "giverId":"000000000000000000000002"}],
@@ -40,10 +39,9 @@
   "aboutMe" : "I like stealing stuff and drinking and smoking",
   "occupants": ["rat"],
   "looks" : "chunky",
-  "height" : 6, //ft
   "eye color" : "brown",
   "hair color" : "brown",
-  "gifts" : [{"_id":"100000000000000000000001", "giverId":"000000000000000000000001"}],
+  "gifts" : [{"_id":"a00000000000000000000001", "giverId":"000000000000000000000001"}],
   "profilePic" : "http://media0.giphy.com/media/4LYu6AdbJmpri/200_s.gif",
   "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2"
 }
@@ -65,7 +63,6 @@
   "aboutMe" : "I like alcohol and women!",
   "occupants": ["Julian"],
   "looks" : "muscular",
-  "height" : 6, //ft
   "eye color" : "brown",
   "hair color" : "black",
   "gifts" : [{"_id":"000000000000000000000001", "giverId":"000000000000000000000002"}],
