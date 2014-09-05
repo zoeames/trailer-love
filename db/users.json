@@ -40,7 +40,7 @@
   "trailerSize" : {"sqFeet":40, "bedrooms":1, "bath":1},
   "aboutMe" : "I like stealing stuff and drinking and smoking",
   "occupants": ["rat"],
-  "looks" : "fluffy",
+  "looks" : "chunky",
   "eye color" : "brown",
   "hair color" : "brown",
   "gifts" : [{"_id":"a00000000000000000000001", "giverId":"000000000000000000000001"}],
