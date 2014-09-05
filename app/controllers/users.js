@@ -54,9 +54,11 @@ exports.edit = function(req,res){
 exports.update = function(req,res){
   console.log('req.body>>>>>', req.body);
   console.log('res.locals.user>>>>>>>>>', res.locals.user);
-//    res.locals.user.save(req.body, function(){
-  res.redirect('/profile');
-//  });
+  User.findById(res.locals.user._id, function(err, user){
+    user.save(req.body, function(){
+      res.redirect('/profile');
+    });
+  });
 };
 
 exports.index = function(req,res){
