@@ -97,3 +97,11 @@ exports.message = function(req, res){
   });
 };
 
+exports.send = function(req, res){
+  User.findById(req.params.userId, function(err, receiver){
+    Message.send(res.locals.user._id, receiver._id, req.body, function(){
+      res.redirect('/users/' + receiver.email);
+    });
+  });
+};
+
