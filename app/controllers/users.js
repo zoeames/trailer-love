@@ -64,10 +64,8 @@ exports.index = function(req,res){
 };
 
 exports.show = function(req,res){
-  console.log('req.params.userId>>>>>>>>>>>>>', req.params.userId);
-  User.findOne({_id:req.params.userId, isPublic:true}, function(err, client){
-    console.log('client>>>>>>>>>>>>>', client);
-    if(client){
+  User.findById(req.params.id, function(err, client){
+    if(client && client.isPublic){
       res.render('users/user', {client:client});
     }else{
       res.redirect('/users');

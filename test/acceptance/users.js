@@ -90,10 +90,10 @@ describe('users', function(){
     });
   });
 
-describe('get /index', function(){
+  describe('get /users', function(){
     it('should show all public users', function(done){
       request(app)
-      .get('/index')
+      .get('/users')
       .set('cookie', cookie)
       .end(function(err, res){
         expect(res.status).to.equal(200);
@@ -101,7 +101,7 @@ describe('get /index', function(){
       });
     });
   });
-  
+
   describe('get /users/:UserId', function(){
     it('should show specific user profile', function(done){
       request(app)
