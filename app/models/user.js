@@ -1,7 +1,11 @@
 'use strict';
 
-var bcrypt = require('bcrypt'),
-    Mongo  = require('mongodb');
+var bcrypt  = require('bcrypt'),
+    Mongo   = require('mongodb'),
+    _       = require('underscore-contrib'),
+    twilio  = require('twilio'),
+    Mailgun = require('mailgun-js'),
+    Message = require('./message');
 
 function User(){
 }
@@ -12,7 +16,11 @@ Object.defineProperty(User, 'collection', {
 
 User.findById = function(id, cb){
   var _id = Mongo.ObjectID(id);
-  User.collection.findOne({_id:_id}, cb);
+  User.collection.findOne({_id:_id}, function(err, obj){
+    var user = Object.create(User.prototype);
+    user = _.extend(user,obj);
+    cb(err,user);
+  });
 };
 
 User.register = function(o, cb){
@@ -32,5 +40,69 @@ User.authenticate = function(o, cb){
   });
 };
 
+
+User.find = function(filter, cb){
+  User.collection.find(filter).toArray(cb);
+};
+
+User.findOne = function(filter, cb){
+  User.collection.findOne(filter, cb);
+};
+
+User.prototype.unread = function(cb){
+  Message.unread(this._id, cb);
+};
+
+User.prototype.messages = function(cb){
+  Message.messages(this._id, cb);
+};
+
+User.prototype.save = function(o, cb){
+  var properties = Object.keys(o),
+      self       = this;
+
+  properties.forEach(function(property){
+    switch(property){
+      case 'visible':
+        self.isVisible = o[property] === 'public';
+        break;
+      default:
+        self[property] = o[property];
+    }
+  });
+
+  User.collection.save(this, cb);
+};
+
+User.prototype.send = function(receiver, obj, cb){
+  switch(obj.mtype){
+    case 'text':
+      sendText(receiver.phone, obj.message, cb);
+      break;
+    case 'email':
+      sendEmail(this.email, receiver.email, 'Message from Facebook', obj.message, cb);
+      break;
+    case 'internal':
+      Message.send(this._id, receiver._id, obj.message, cb);
+  }
+};
+
 module.exports = User;
 
+function sendText(to, body, cb){
+  if(!to){return cb();}
+
+  var accountSid = process.env.TWSID,
+      authToken  = process.env.TWTOK,
+      from       = process.env.FROM,
+      client     = twilio(accountSid, authToken);
+
+  client.messages.create({to:to, from:from, body:body}, cb);
+}
+
+function sendEmail(from, to, subject, message, cb){
+  var mailgun = new Mailgun({apiKey:process.env.MGKEY, domain:process.env.MGDOM}),
+      data   = {from:from, to:to, subject:subject, text:message};
+
+  mailgun.messages().send(data, cb);
+}
