@@ -1,0 +1,27 @@
+{
+  "_id" : {"$oid":"000000000000000000000001"},
+  "senderId" : {"$oid" :"s00000000000000000000002"},
+  "receiverId" : {"$oid" :"r00000000000000000000002"},
+  "isPending" : false,
+  "isAccepted" : true,
+  "isRejected" : false
+}
+
+{
+  "_id" : {"$oid":"000000000000000000000002"},
+  "senderId" : {"$oid" :"s10000000000000000000002"},
+  "receiverId" : {"$oid" :"r10000000000000000000002"},
+  "isPending" : true,
+  "isAccepted" : false,
+  "isRejected" : false
+}
+
+{
+  "_id" : {"$oid":"000000000000000000000003"},
+  "senderId" : {"$oid" :"s20000000000000000000002"},
+  "receiverId" : {"$oid" :"r20000000000000000000002"},
+  "isPending" : false,
+  "isAccepted" : false,
+  "isRejected" : true
+}
+

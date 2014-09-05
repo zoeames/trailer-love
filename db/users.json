@@ -1,11 +1,75 @@
 {
   "_id" : {"$oid":"000000000000000000000001"},
-  "email" : "bob@aol.com",
+  "name" : "Bubbles",
+  "location" : {"name":"Nashville, TN USA", "lat":36.1866405, "lng":-86.7852455},
+  "email" : "bubs@aol.com",
+  "phone" : 5551231234,
+  "photos": [
+    "http://assets.sbnation.com/assets/2235525/Bubs_medium.jpg",
+    "https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xaf1/v/t1.0-9/429944_359149577439718_1122891575_n.jpg?oh=55a1e86cb7ac02c50b0cee474acdd856&oe=545C46B1&__gda__=1416584288_9a820a4829374a27f6f720ef53255301",
+    "http://top-documentary.com/wp-content/uploads/2011/12/81354964.jpg",
+    "http://1.bp.blogspot.com/-mdYHIl7KEYg/T8ag9l1n5YI/AAAAAAAACvE/nqwGyr81sFU/s1600/trailerparkbubble.jpg"
+      ],
+  "favorites" : ["Sally", "Sue", "Sara"],
+  "trailerSize" : {"sqFeet":100, "bedrooms":1, "bath":1},
+  "aboutMe" : "I like kitties and partying!",
+  "occupants": ["kitty 1", "kitty 2", "kitty 3"],
+  "looks" : "chunky",
+  "height" : 6, //ft
+  "eye color" : "blue",
+  "hair color" : "blonde",
+  "gifts" : [{"_id":"000000000000000000000008", "giverId":"000000000000000000000002"}],
+  "profilePic" : "http://jam.canoe.ca/Music/2006/04/24/bubbles256.jpg",
   "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2"
 }
+
 {
   "_id" : {"$oid":"000000000000000000000002"},
-  "email" : "sue@aol.com",
-  "password" : "$2a$10$sjPx9TkrEASeXzH6uuDCDO.n1Sj/H2A/bu/9hBFfm5fm3Z4LzrEPa"
+  "name" : "Ricky",
+  "location" : {"name":"Dickson, TN USA", "lat":36.0592365, "lng":-87.3713995},
+  "email" : "ricky@aol.com",
+  "phone" : 5551231235,
+  "photos": [
+    "http://img2.wikia.nocookie.net/__cb20091104160712/trailerpark/images/0/00/Ricky.jpg",
+    "http://people.rit.edu/ajs5329/140/project2/media/rickyy.jpeg",
+    "http://i.ytimg.com/vi/mZvJi9eG4lo/hqdefault.jpg",
+    "http://images.sodahead.com/polls/003344211/3842216934_tumblr_md6lhvFJGw1qaekevo1_1280_answer_3_xlarge.png"
+      ],
+  "favorites" : ["Jesse", "Megan", "Katy"],
+  "trailerSize" : {"sqFeet":40, "bedrooms":1, "bath":1},
+  "aboutMe" : "I like stealing stuff and drinking and smoking",
+  "occupants": ["rat"],
+  "looks" : "chunky",
+  "height" : 6, //ft
+  "eye color" : "brown",
+  "hair color" : "brown",
+  "gifts" : [{"_id":"100000000000000000000001", "giverId":"000000000000000000000001"}],
+  "profilePic" : "http://media0.giphy.com/media/4LYu6AdbJmpri/200_s.gif",
+  "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2"
+}
+
+{
+  "_id" : {"$oid":"000000000000000000000003"},
+  "name" : "Julian",
+  "location" : {"name":"Columbia, TN USA", "lat":35.6439419, "lng":-87.0128069},
+  "email" : "julian@aol.com",
+  "phone" : 5551231236,
+  "photos": [
+    "http://img3.wikia.nocookie.net/__cb20091104025647/trailerpark/images/0/0e/Julian2.gif",
+    "https://gs1.wpc.edgecastcdn.net/8061DD/s3_videos_production/thumbnails/37840/drOT8eJ-uMYnuxZji8yeQQ.jpg",
+    "http://101squadron.com/blog/wp-content/uploads/2011/05/Julian.png",
+    "https://gs1.wpc.edgecastcdn.net/8061DD/s3_videos_production/thumbnails/37984/cZhx5IHbmXYS2q2V5eR4VQ.jpg"
+      ],
+  "favorites" : ["Lisa", "Betty", "Sara"],
+  "trailerSize" : {"sqFeet":200, "bedrooms":1, "bath":1},
+  "aboutMe" : "I like alcohol and women!",
+  "occupants": ["Julian"],
+  "looks" : "muscular",
+  "height" : 6, //ft
+  "eye color" : "brown",
+  "hair color" : "black",
+  "gifts" : [{"_id":"000000000000000000000001", "giverId":"000000000000000000000002"}],
+  "profilePic" : "http://www.telefilm.ca/upload/images/tv/03TV313_1.jpg",
+  "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2"
 }
 

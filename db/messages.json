@@ -1,0 +1,17 @@
+{
+  "_id" : {"$oid":"000000000000000000000001"},
+  "senderId" : {"$oid" :"s00000000000000000000002"},
+  "receiverId" : {"$oid" :"r00000000000000000000002"},
+  "date" : {"$date" : 1409270400000},
+  "message" : "Hey there! Want to go skip rocks across the pond?",
+  "isRead" : false
+}
+
+{
+  "_id" : {"$oid":"000000000000000000000002"},
+  "senderId" : {"$oid" :"s20000000000000000000002"},
+  "receiverId" : {"$oid" :"r20000000000000000000002"},
+  "date" : {"$date" : 1409270400099},
+  "message" : "Hi! Want to drink some moonshine?",
+  "isRead" : false
+}
