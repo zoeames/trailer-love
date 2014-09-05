@@ -1,0 +1,70 @@
+{
+  "_id" : {"$oid":"000000000000000000000001"},
+  "name" : "PBR",
+  "photo" : "http://www.freewoodpost.com/wp-content/uploads/2013/03/pbr.jpg",
+  "price" 9.99
+}
+
+{
+  "_id" : {"$oid":"000000000000000000000002"},
+  "name" : "Beer Helmet",
+  "photo" : "http://img.wikinut.com/img/41y7sjidd7sit-1j/jpeg/0/Beer-Helmet.jpeg",
+  "price" 20
+}
+
+{
+  "_id" : {"$oid":"000000000000000000000003"},
+  "name" : "Wine Glasses",
+  "photo" : "http://thumbs2.ebaystatic.com/d/l225/m/mMtDKChmEaFl9rHCBMsJnrA.jpg",
+  "price" 15
+}
+
+{
+  "_id" : {"$oid":"000000000000000000000004"},
+  "name" : "Earrings",
+  "photo" : "https://img0.etsystatic.com/000/0/5276379/il_fullxfull.162247428.jpg",
+  "price" 12.50
+}
+
+{
+  "_id" : {"$oid":"000000000000000000000005"},
+  "name" : "Bracelet",
+  "photo" : "http://cdn-s3-1.wanelo.com/product/image/8843459/x354.jpg",
+  "price" 5
+}
+
+{
+  "_id" : {"$oid":"000000000000000000000006"},
+  "name" : "Chair",
+  "photo" : "http://ry23b3zt0v828usppwlfsq9dc.wpengine.netdna-cdn.com/wp-content/uploads/2014/08/lawn-chairs.jpg",
+  "price" 13
+}
+
+{
+  "_id" : {"$oid":"000000000000000000000007"},
+  "name" : "Watch",
+  "photo" : "http://rlv.zcache.ca/redneck_joe_funny_stuff_wrist_watch-r256b54df66584912ae3a1d8ddc43fe5c_wmorm_8byvr_324.jpg",
+  "price" 26
+}
+
+{
+  "_id" : {"$oid":"000000000000000000000008"},
+  "name" : "Box of Slim Jims",
+  "photo" : "http://www.carlynporter.com/wp-content/uploads/2011/11/slim-jim.jpg",
+  "price" 18
+}
+
+{
+  "_id" : {"$oid":"000000000000000000000009"},
+  "name" : "Flowers",
+  "photo" : "http://www.funnylifestories.com/wp-content/uploads/2013/02/toilet-bowl-flower-planter.png",
+  "price" 30
+}
+
+{
+  "_id" : {"$oid":"100000000000000000000001"},
+  "name" : "Ammo",
+  "photo" : "http://media.midwayusa.com/productimages/880x660/Primary/927/927881.jpg",
+  "price" 11
+}
+
