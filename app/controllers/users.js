@@ -70,7 +70,7 @@ exports.show = function(req,res){
     if(client){
       res.render('users/user', {client:client});
     }else{
-      res.redirect('/index');
+      res.redirect('/users');
     }
   });
 };
