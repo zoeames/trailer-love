@@ -1,6 +1,8 @@
 'use strict';
 
-var User = require('../models/user');
+var User   = require('../models/user'),
+    Message   = require('../models/message'),
+    moment = require('moment');
 
 exports.new = function(req, res){
   res.render('users/new');
@@ -50,7 +52,7 @@ exports.edit = function(req,res){
 };
 
 exports.update = function(req,res){
-  console.log('req.body>>>>>>>>>>', req.body);
+  console.log('req.body>>>>>', req.body);
   console.log('res.locals.user>>>>>>>>>', res.locals.user);
 //    res.locals.user.save(req.body, function(){
   res.redirect('/profile');
@@ -72,6 +74,28 @@ exports.show = function(req,res){
     }else{
       res.redirect('/index');
     }
+  });
+};
+
+exports.client = function(req, res){
+  User.findOne({email:req.params.email}, function(err, client){
+    if(client){
+      res.render('users/client', {client:client});
+    }else{
+      res.redirect('/profile');
+    }
+  });
+};
+
+exports.messages = function(req, res){
+  res.locals.user.messages(function(err, messages){
+    res.render('users/messages', {messages:messages, moment:moment});
+  });
+};
+
+exports.message = function(req, res){
+  Message.read(req.params.msgId, function(err, message){
+    res.render('users/message', {message:message, moment:moment});
   });
 };
 
