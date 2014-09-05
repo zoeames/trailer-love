@@ -29,8 +29,12 @@ block content
         .form-group
           label(for='about') About Me
           input.form-control#about(type='textarea', name='about', value=user.about)
-
-        button.btn.btn-primary(type='submit') Submit
+        .form-group
+          label(for='location') Location
+          input.form-control#loc(type='text', name='loc', value=user.location)
+          input.form-control#lat(type='hidden', name='lat')
+          input.form-control#lng(type='hidden', name='lng')
+          button.btn.btn-success(type='submit') Edit Profile
     .col-xs-6
 
 block scripts
