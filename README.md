@@ -8,7 +8,7 @@ coverage status icon
 ![Image2](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/two.jpg)
 
 ### Description
-write a description about your project
+Trailer Love
 
 ### Models
 ```
@@ -40,7 +40,11 @@ $ npm test
 ```
 
 ### Contributors
-- [Chyld Medford](https://github.com/chyld)
+- [Zoe Ames]
+- [Michael Barreiro]
+- [Matt Keef]
+- [Joy Pratt]
+- [Dennis Stanley]
 
 ### License
 [MIT](LICENSE)
