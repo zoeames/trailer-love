@@ -1,3 +1,24 @@
 extends ../shared/template
 block content
-  h2 Send a Message!
+  .row
+    .panel.panel-default
+      .panel-heading
+        h1.panel-title Message
+      .panel-body
+        .col-xs-2
+          h3#email From
+          h3#email Date
+          h3#email Subject
+          h3#email Body
+        .col-xs-8
+          h3: a(href=('/users/' + message.sender.email))= message.sender.email
+          h3=moment(message.sent).format('DD MMM, YYYY')
+          h3=message.subject
+          h3=message.message
+    .col-xs-2
+  .row
+    .col-xs-12
+      a.btn.btn-default.btn-lg(href=('/users/' + message.from), role='button') Reply
+
+
+block scripts

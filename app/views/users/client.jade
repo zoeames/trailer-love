@@ -1,0 +1,26 @@
+extends ../shared/template
+block content
+  h2 Send this client a Message
+  .row
+    .col-xs-12
+      h2=client.email
+  .row
+    .col-xs-2
+      a.thumbnail(href='#{user.photo}')
+        img(src=client.photo)
+    .col-xs-4.col-xs-offset-2
+      .panel.panel-default
+        .panel-body
+          form.form(role='form', method='post', action='/messages/#{client._id}')
+            .row
+              .col-xs-12
+                .form-group
+                  label(for='subject') Subject
+                  input.form-control#subject(name='subject', type='text')
+                .form-group
+                  label(for='body') Message
+                  textarea.form-control#body(name='body')
+                .form-group
+                  button.btn.btn-info.btn-default(type='submit') Send Message
+
+block scripts
