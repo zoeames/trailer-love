@@ -28,18 +28,6 @@ describe('users', function(){
     });
   });
 
- describe('get /register', function(){
-    it('should show the register page', function(done){
-      request(app)
-      .get('/register')
-      .end(function(err, res){
-        expect(res.status).to.equal(200);
-        expect(res.text).to.include('Register');
-        done();
-      });
-    });
-  });
-  
   describe('get /register', function(){
     it('should show the register page', function(done){
       request(app)
@@ -52,7 +40,19 @@ describe('users', function(){
     });
   });
 
- describe('get /profile/edit', function(){
+  describe('get /register', function(){
+    it('should show the register page', function(done){
+      request(app)
+      .get('/register')
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('Register');
+        done();
+      });
+    });
+  });
+
+  describe('get /profile/edit', function(){
     it('should show the edit profile page', function(done){
       request(app)
       .get('/profile/edit')

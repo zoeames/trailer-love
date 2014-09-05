@@ -1,7 +1,8 @@
 'use strict';
 
-var bcrypt = require('bcrypt'),
-    Mongo  = require('mongodb'),
+var bcrypt  = require('bcrypt'),
+    Mongo   = require('mongodb'),
+    _       = require('underscore-contrib'),
     twilio  = require('twilio'),
     Mailgun = require('mailgun-js'),
     Message = require('./message');
@@ -15,7 +16,11 @@ Object.defineProperty(User, 'collection', {
 
 User.findById = function(id, cb){
   var _id = Mongo.ObjectID(id);
-  User.collection.findOne({_id:_id}, cb);
+  User.collection.findOne({_id:_id}, function(err, obj){
+    var user = Object.create(User.prototype);
+    user = _.extend(user,obj);
+    cb(err,user);
+  });
 };
 
 User.register = function(o, cb){

@@ -8,11 +8,11 @@ block content
         input(type='hidden', name='_method', value='put')
         .radio
           label
-            input(type='radio' name='visible' value='public' checked=user.isVisible)
+            input(type='radio' name='public' value='public' checked=user.isPublic)
             span Public
         .radio
           label
-            input(type='radio' name='visible' value='private', checked=!user.isVisible)
+            input(type='radio' name='public' value='private', checked=!user.isPublic)
             span Private
         .form-group
           label(for='email') Email

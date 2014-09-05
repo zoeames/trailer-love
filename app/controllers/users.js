@@ -52,13 +52,23 @@ exports.edit = function(req,res){
 exports.update = function(req,res){
   console.log('req.body>>>>>>>>>>', req.body);
   console.log('res.locals.user>>>>>>>>>', res.locals.user);
-    res.locals.user.save(req.body, function(){
+//    res.locals.user.save(req.body, function(){
   res.redirect('/profile');
-  });
+//  });
 };
 
 exports.index = function(req,res){
   User.find({isPublic:true}, function(err, users){
     res.render('users/index', {users:users});
+  });
+};
+
+exports.show = function(req,res){
+  User.findOne({_id:req.params.userId, isPublic:true}, function(err, client){
+    if(client){
+      res.render('users/client', {client:client});
+    }else{
+      res.redirect('/users');
+    }
   });
 };
