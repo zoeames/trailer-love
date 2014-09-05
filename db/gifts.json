@@ -62,7 +62,7 @@
 }
 
 {
-  "_id" : {"$oid":"100000000000000000000001"},
+  "_id" : {"$oid":"a00000000000000000000001"},
   "name" : "Ammo",
   "photo" : "http://media.midwayusa.com/productimages/880x660/Primary/927/927881.jpg",
   "price" 11
