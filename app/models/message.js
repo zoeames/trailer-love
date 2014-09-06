@@ -4,17 +4,23 @@ var async = require('async'),
     Mongo = require('mongodb');
 
 function Message(senderId, receiverId, message){
-  this.senderId = senderId;
+  console.log('Message constructor entered');
+  this.senderId   = senderId;
   this.receiverId = receiverId;
-  this.message = message.body;
-  this.date = new Date();
-  this.isRead = false;
-
+  this.message       = message;
+  this.date       = new Date();
+  this.isRead     = false;
+  console.log('Message constructor ended');
 }
 
-Object.defineProperty(Message, 'collection',{
+Object.defineProperty(Message, 'collection', {
   get: function(){return global.mongodb.collection('messages');}
 });
+
+Message.create = function(o, userId, cb){
+  var message = new Message(o, userId);
+  Message.collection.save(message, cb);
+};
 
 Message.read = function(id, cb){
   var _id = Mongo.ObjectID(id);
@@ -28,22 +34,15 @@ Message.send = function(senderId, receiverId, message, cb){
   Message.collection.save(m, cb);
 };
 
-Message.find = function(filter, cb){
-  Message.collection.find(filter).toArray(cb);
+Message.unread = function(receiverId, cb){
+  Message.collection.find({receiverId:receiverId, isRead:false}).count(cb);
 };
 
-Message.prototype.save = function(cb){
-  Message.collection.save(this, cb);
-};
-
-Message.undread = function(receiverId, cb){
+Message.findAllMessagesByReceiverId = function(receiverId, cb){
+  console.log('>>>>>>>  MESSAGE.MESSAGES - receiverId: ', receiverId);
   receiverId = Mongo.ObjectID(receiverId);
-  Message.collection.find({receiverId:receiverId}).count(cb);
-};
-
-Message.messages = function(receiverId, cb){
-  receiverId = Mongo.ObjectID(receiverId);
-  Message.collection.find({receiverId:receiverId}).sort({date: -1}).toArray(function(err,msgs){
+  Message.collection.find({receiverId:receiverId}).sort({date:-1}).toArray(function(err, msgs){
+    console.log('>>>>>>>  MESSAGE.MESSAGES - msgs: ', msgs);
     async.map(msgs, iterator, cb);
   });
 };

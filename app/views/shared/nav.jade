@@ -11,10 +11,10 @@
     .collapse.navbar-collapse#bs-navbar-collapse
       ul.nav.navbar-nav.navbar-right
         if user
-          li: a.wobble-horizontal(href='/profile') Profile
-          li: a.wobble-horizontal(href='/profile/edit') Edit Profile
+          li: a.wobble-horizontal(href='/profile'): i.fa.fa-user &nbsp; My Profile
+          li: a.wobble-horizontal(href='/messages'): i.fa.fa-envelope &nbsp; My Messages
           li: a.wobble-horizontal(href='/users'): i.fa.fa-heart &nbsp; Find Love
-          li: a.wobble-horizontal(href='/gifts') Find Gifts
+          li: a.wobble-horizontal(href='/gifts'): i.fa.fa-shopping-cart &nbsp; Send Gifts
           li
             form.navbar-form(method='post', action='/logout')
               .form-group
