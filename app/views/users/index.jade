@@ -11,8 +11,8 @@ block content
         th About Me
     body
       each user in users
-        tr(data-loc=user.location.name, data-lat=user.location.lat, data-lng=user.location.lng)
-          td: a(href='/users/#{user._id}')= user.name
+        tr
+          td: a.btn.btn-primary.outline-inward(href='/users/#{user._id}')= user.name
           td= user.location.name
           td#image.img.thumbnail(style='background-image:url("#{user.profilePic}")')
           td= user.aboutMe
