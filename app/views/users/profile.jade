@@ -7,7 +7,8 @@ block content
   .row
     .col-xs-2
       a.thumbnail(href='#')
-        img(src=user.photo)
+      a.btn.btn-primary(href='/profile/edit') Edit My Profile
+      #image.img.thumbnail(style='background-image:url("#{user.profilePic}")')
     .col-xs-10
   .row
     .col-xs-12
@@ -21,6 +22,6 @@ block content
           tr
             td= user.email
             td= user.phone
-            td= user.isVisible
+            td= user.isPublic
 
 block scripts
