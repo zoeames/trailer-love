@@ -97,5 +97,15 @@ describe('User', function(){
       });
     });
   });
+
+  describe('.facebookAuthenticate', function(){
+    it('should authenticate a user\'s facebook credentials', function(done){
+      var obj = {id:'0000002'};
+      User.facebookAuthenticate({}, {}, obj, function(err, user){
+        expect(user._id).to.be.instanceof(Mongo.ObjectID);
+        done();
+      });
+    });
+  });
 });
 
