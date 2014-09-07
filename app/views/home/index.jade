@@ -1,7 +1,27 @@
-extends ../shared/template
-block content
-  h2 Welcome to Trailer Love!
-
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Trailer Love
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/font-awesome/css/font-awesome.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='/css/homestyle.css')
+    link(rel='stylesheet', href='/css/animate.css')
+    link(rel='icon' type='image/png' href='/img/redneck-women.png')
+  body
+    include nav
+    .container-fluid
+      .row
+        .col-xs-12
+          h2.animated.rubberBand Welcome to Trailer Love!
+          img.homeHeart(src='/img/homeHeart.png')
+          img.hometrash(src='/img/hometrash.png')
+          img.footer(src='/img/footer.png')
+          block content
+  script(src='/js/vendor/jquery-2.1.1.min.js')
 block scripts
   script(src='/js/user/home.js')
+  script(src='/js/vendor/jquery-2.1.1.min.js')
 

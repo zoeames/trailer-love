@@ -1,18 +1,10 @@
 extends ../shared/template
 block content
-  h2 My gifts
-  table#gifts.table.table-bordered
-    thead
-      tr
-        th Name
-        th Photo
-        th Price
-    tbody
-      each gift in gifts
-        tr
-          td
-            form(method='post', action='/cart')
-              input(type='hidden', name='giftId', value=gift._id)
-              button.btn.btn-primary.btn-sm(type='submit')= gift.name
-          td(style='background-image:url("#{gift.photo}")')
-          td $#{gift.price.toFixed(2)}
+  h2.animated.flip My gifts
+  each gift in gifts
+    .giftContain.animated.zoomIn
+      .gPhoto(style='background-image: url("#{gift.photo}"); background-size: cover; background-reapeat: no-repeat;')
+        form(method='post', action='/cart')
+          input(type='hidden', name='giftId', value=gift._id)
+          button.myButton.grow-rotate(type='submit')= gift.name
+      .gprice $#{gift.price.toFixed(2)}
