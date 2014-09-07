@@ -114,5 +114,17 @@ describe('users', function(){
     });
   });
 
+  describe('get /gifts', function(){
+    it('should render the gifts page', function(done){
+      request(app)
+      .get('/gifts')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        done();
+      });
+    });
+  });
+
 });
 
