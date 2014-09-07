@@ -69,7 +69,7 @@ exports.index = function(req,res){
 
 exports.show = function(req,res){
   User.findById(req.params.id, function(err, client){
-    if(client && client.isPublic){
+    if(client && client.isVisible){
       res.render('users/show', {client:client});
     }else{
       res.redirect('/users');
