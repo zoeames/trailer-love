@@ -1,8 +1,9 @@
 'use strict';
 
-var User   = require('../models/user'),
-    Message   = require('../models/message'),
-    moment = require('moment');
+var User    = require('../models/user'),
+    Message = require('../models/message'),
+    moment  = require('moment'),
+    mp      = require('multiparty');
 
 exports.new = function(req, res){
   res.render('users/new');
@@ -51,12 +52,16 @@ exports.edit = function(req,res){
   res.render('users/edit');
 };
 
-exports.update = function(req,res){
-  console.log('req.body>>>>>', req.body);
-  console.log('res.locals.user>>>>>>>>>', res.locals.user);
-  User.findById(res.locals.user._id, function(err, user){
-    user.save(req.body, function(){
-      res.redirect('/profile');
+exports.update = function(req, res){
+  var form = new mp.Form();
+  console.log('REQ in exports.update>>>>>>>', req);
+  form.parse(req, function(err, fields, files){
+    console.log('FIELDS in exports.update>>>>>>>>>>>>>>>>>>', fields);
+    console.log('FILES in exports.update>>>>>>>>>>>>>>>>>>', files);
+    User.findById(res.locals.user._id, function(err, user){
+      user.save(fields, files, function(err, cb){
+        res.redirect('/profile');
+      });
     });
   });
 };
