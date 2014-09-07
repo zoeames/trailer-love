@@ -36,7 +36,10 @@ module.exports = function(app, express){
   app.post('/login', passport.authenticate('local', {successRedirect:'/', failureRedirect:'/login'}));
   app.get('/auth/google', passport.authenticate('google',  {scope: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/plus.profile.emails.read']}));
   app.get('/auth/google/callback', passport.authenticate('google', {successRedirect:'/', failureRedirect:'/login'}));
-
+  app.get('/auth/twitter', passport.authenticate('twitter'));
+  app.get('/auth/twitter/callback', passport.authenticate('twitter', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are in!', failureFlash:'Try again, Bozo!'}));
+  app.get('/auth/facebook', passport.authenticate('facebook'));
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are in!', failureFlash:'Try again, Bozo!'}));
   app.use(security.bounce);
   app.delete('/logout', users.logout);
 
