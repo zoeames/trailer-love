@@ -102,7 +102,7 @@ describe('users', function(){
     });
   });
 
-  describe('get /users/:UserId', function(){
+  describe('get /users/:id', function(){
     it('should show specific user profile', function(done){
       request(app)
       .get('/users/000000000000000000000002')
