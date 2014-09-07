@@ -3,6 +3,8 @@
 var bcrypt  = require('bcrypt'),
     Mongo   = require('mongodb'),
     _       = require('underscore-contrib'),
+    fs      = require('fs'),
+    path    = require('path'),
     twilio  = require('twilio'),
     Mailgun = require('mailgun-js'),
     Message = require('./message');
@@ -33,7 +35,6 @@ User.register = function(o, cb){
     User.collection.save(o, cb);
   });
 };
-
 
 User.localAuthenticate = function(email, password, cb){
   User.collection.findOne({email:email}, function(err, user){
@@ -74,7 +75,6 @@ User.find = function(filter, cb){
 };
 
 User.findOne = function(filter, cb){
-  console.log('filter>>>>>>>>>>>>>', filter);
   User.collection.findOne(filter, cb);
 };
 
@@ -86,20 +86,25 @@ User.prototype.messages = function(cb){
   Message.messages(this._id, cb);
 };
 
-User.prototype.save = function(o, cb){
-  console.log('o in save method>>>>>>>>>>>>>>>>>>>>>', o);
-  var properties = Object.keys(o),
+User.prototype.save = function(fields, files, cb){
+  console.log('FIELDS in #save>>>>>>>>>>>>>>>', fields);
+  console.log('FILES in #save>>>>>>>>>>>>>>>', files);
+  var properties = Object.keys(fields),
       self       = this;
 
   properties.forEach(function(property){
     switch(property){
-      case 'public':
-        self.isPublic = o[property] === 'public';
+      case 'visible':
+        self.isVisible = fields[property] === 'visible';
         break;
       default:
-        self[property] = o[property];
+        self[property] = fields[property];
     }
   });
+
+  var oldphotos = this.photos,
+      newphotos = moveFiles(files, oldphotos.length, '/img/' + this._id);
+  this.photos = oldphotos.concat(newphotos);
 
   User.collection.save(this, cb);
 };
@@ -136,3 +141,25 @@ function sendEmail(from, to, subject, message, cb){
 
   mailgun.messages().send(data, cb);
 }
+
+function moveFiles(files, count, relDir){
+  var baseDir = __dirname + '/../static',
+      absDir  = baseDir + relDir;
+
+  if(!fs.existsSync(absDir)){fs.mkdirSync(absDir);}
+
+  var tmpPhotos = files.photo.map(function(photo, index){
+    if(!photo.size){return;}
+
+    var ext      = path.extname(photo.path),
+        name     = count + index + ext,
+        absPath  = absDir + '/' + name,
+        relPath  = relDir + '/' + name;
+
+    fs.renameSync(photo.path, absPath);
+    return relPath;
+  });
+
+  return _.compact(tmpPhotos);
+}
+

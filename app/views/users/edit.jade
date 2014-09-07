@@ -8,11 +8,11 @@ block content
         input(type='hidden', name='_method', value='put')
         .radio
           label
-            input(type='radio' name='public' value='public' checked=user.isPublic)
+            input(type='radio' name='public' value='public' checked=user.isVisible)
             span Public
         .radio
           label
-            input(type='radio' name='public' value='private', checked=!user.isPublic)
+            input(type='radio' name='public' value='private', checked=!user.isVisible)
             span Private
         .form-group
           label(for='email') Email
@@ -24,6 +24,9 @@ block content
           label(for='photo') Profile Picture
           input.form-control#photo(type='text', name='photo', value=user.profilePic)
         .form-group
+          label(for='photo') Photos
+          input.form-control#photo(type='file', name='photo', multiple=true)
+        .form-group
           label(for='tagline') Tagline
           input.form-control#tagline(type='text', name='tagline', value=user.tagline)
         .form-group
@@ -31,7 +34,7 @@ block content
           input.form-control#about(type='textarea', name='about', value=user.about)
         .form-group
           label(for='location') Location
-          input.form-control#loc(type='text', name='loc', value=user.location)
+          input.form-control#loc(type='text', name='loc', value=user.location.name)
           input.form-control#lat(type='hidden', name='lat')
           input.form-control#lng(type='hidden', name='lng')
           button.btn.btn-success(type='submit') Edit Profile

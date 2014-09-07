@@ -58,5 +58,54 @@ describe('User', function(){
       });
     });
   });
+
+  describe('.findById', function(){
+    it('should find a user by its id', function(done){
+      User.findById('000000000000000000000001', function(err, user){
+        expect(user).to.be.instanceof(User);
+        expect(user.name).to.equal('Bubbles');
+        done();
+      });
+    });
+  });
+
+  describe('.register', function(){
+    it('should regisiter a new user', function(done){
+      User.register({email:'jim@aol.com', password:'1234'}, function(err, user){
+        expect(user.email).to.equal('jim@aol.com');
+        done();
+      });
+    });
+  });
+
+  describe('.googleAuthenticate', function(){
+    it('should authenticate a user\'s google credentials', function(done){
+      var obj = {id:'1234567'};
+      User.googleAuthenticate({}, {}, obj, function(err, user){
+        expect(user._id).to.be.instanceof(Mongo.ObjectID);
+        done();
+      });
+    });
+  });
+
+  describe('.twitterAuthenticate', function(){
+    it('should authenticate a user\'s twitter credentials', function(done){
+      var obj = {id:'0000001'};
+      User.twitterAuthenticate({}, {}, obj, function(err, user){
+        expect(user._id).to.be.instanceof(Mongo.ObjectID);
+        done();
+      });
+    });
+  });
+
+  describe('.facebookAuthenticate', function(){
+    it('should authenticate a user\'s facebook credentials', function(done){
+      var obj = {id:'0000002'};
+      User.facebookAuthenticate({}, {}, obj, function(err, user){
+        expect(user._id).to.be.instanceof(Mongo.ObjectID);
+        done();
+      });
+    });
+  });
 });
 
