@@ -115,7 +115,7 @@ describe('users', function(){
   });
 
   describe('get /gifts', function(){
-    it('should render the gifts page', function(done){
+    it('should show the gifts page', function(done){
       request(app)
       .get('/gifts')
       .set('cookie', cookie)
@@ -126,5 +126,53 @@ describe('users', function(){
     });
   });
 
+  describe('post /cart', function(){
+    it('should swnd a post to cart', function(done){
+      request(app)
+      .post('/cart')
+      .send('000000000000000000000002')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        done();
+      });
+    });
+  });
+
+  describe('get /cart', function(){
+    it('should show items in cart', function(done){
+      request(app)
+      .get('/cart')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        done();
+      });
+    });
+  });
+
+  describe('delete /cart', function(){
+    it('should delete items in cart', function(done){
+      request(app)
+      .delete('/cart')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        done();
+      });
+    });
+  });
+
+  describe('post /charge', function(){
+    it('should charge a user for items in cart', function(done){
+      request(app)
+      .post('/charge')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        done();
+      });
+    });
+  });
 });
 
