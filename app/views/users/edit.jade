@@ -5,18 +5,18 @@ block content
   .row
     .col-xs-4
     .col-xs-4
-      form(role='form', method='post', action='/profile')
-        input(type='hidden', name='_method', value='put')
+      form(role='form', method='post', action='/profile', enctype='multipart/form-data')
+        input(type='hidden', name='_method', value='post')
         .panel-heading
           h2 Edit Profile
         .panel
           .radio
             label
-              input(type='radio' name='public' value='public' checked=user.isVisible)
+              input(type='radio' name='isVisible' value='public' checked=user.isVisible)
               span Public
           .radio
             label
-              input(type='radio' name='public' value='private', checked=!user.isVisible)
+              input(type='radio' name='isVisible' value='private', checked=!user.isVisible)
               span Private
         .form-group
           label(for='email') Email
@@ -25,11 +25,11 @@ block content
           label(for='phone') Phone
           input.form-control#phone(type='tel', name='phone', value=user.phone)
         .form-group
-          label(for='photo') Profile Picture
-          input.form-control#photo(type='text', name='photo', value=user.profilePic)
+          label(for='profilePic') Profile Picture
+          input.form-control#photo(type='text', name='profilePic', value=user.profilePic)
         .form-group
-          label(for='photo') Photos
-          input.form-control#photo(type='file', name='photo', multiple=true)
+          label(for='photos') Photos
+          input.form-control#photo(type='file', name='photos', multiple=true)
         .form-group
           label(for='tagline') Tagline
           input.form-control#tagline(type='text', name='tagline', value=user.tagline)
@@ -41,7 +41,7 @@ block content
           input.form-control#loc(type='text', name='loc', value=user.location.name)
           input.form-control#lat(type='hidden', name='lat')
           input.form-control#lng(type='hidden', name='lng')
-          button.editEdit.bubble-float-top.btn.btn-success(type='submit') Edit Profile
+        button.editEdit.bubble-float-top.btn.btn-success(type='submit') Edit Profile
     .col-xs-4
 
 block scripts

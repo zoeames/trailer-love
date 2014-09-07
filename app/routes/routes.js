@@ -45,7 +45,7 @@ module.exports = function(app, express){
 
   app.get('/profile', users.profile);
   app.get('/profile/edit', users.edit);
-  app.put('/profile', users.update);
+  app.post('/profile', users.update);
   app.get('/users', users.index);
   app.get('/users/:id', users.show);
 
