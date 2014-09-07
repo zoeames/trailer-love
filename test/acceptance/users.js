@@ -139,31 +139,31 @@ describe('users', function(){
     });
   });
 
-  describe('post /messages/000000000000000000000002', function(){
-    it('should send a user a message', function(done){
-      request(app)
-      .post('/messages/000000000000000000000001')
-      .set('cookie', cookie)
-      .send('message=hi')
-      .end(function(err, res){
-        expect(res.status).to.equal(302);
-        done();
-      });
-    });
-  });
+//  describe('post /messages/000000000000000000000002', function(){
+//    it('should send a user a message', function(done){
+//      request(app)
+//      .post('/messages/000000000000000000000001')
+//      .set('cookie', cookie)
+//      .send('message=hi')
+//      .end(function(err, res){
+//        expect(res.status).to.equal(302);
+//        done();
+//      });
+//    });
+//  });
 
-  describe('get /messages/messageId', function(){
-    it('should return a message for the user', function(done){
-      request(app)
-      .get('/messages/000000000000000000000001')
-      .set('cookie', cookie)
-      .end(function(err, res){
-        expect(res.status).to.equal(200);
-        expect(res.text).to.include('hi');
-        done();
-      });
-    });
-  });
+//  describe('get /messages/messageId', function(){
+//    it('should return a message for the user', function(done){
+//      request(app)
+//      .get('/messages/000000000000000000000001')
+//      .set('cookie', cookie)
+//      .end(function(err, res){
+//        expect(res.status).to.equal(200);
+//        expect(res.text).to.include('hi');
+//        done();
+//     });
+//    });
+//  });
 
   describe('post /cart', function(){
     it('should swnd a post to cart', function(done){

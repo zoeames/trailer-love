@@ -2,7 +2,7 @@
 
 var User    = require('../models/user'),
     Message = require('../models/message'),
-    moment  = require('moment'),
+//    moment  = require('moment'),
     mp      = require('multiparty');
 
 exports.new = function(req, res){
