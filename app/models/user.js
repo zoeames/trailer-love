@@ -50,6 +50,22 @@ User.googleAuthenticate = function(token, secret, google, cb){
   });
 };
 
+User.twitterAuthenticate = function(token, secret, twitter, cb){
+  User.collection.findOne({twitterId:twitter.id}, function(err, user){
+    if(user){return cb(null, user);}
+    user = {twitterId:twitter.id, username:twitter.username, displayName:twitter.displayName, type:'twitter'};
+    User.collection.save(user, cb);
+  });
+};
+
+User.facebookAuthenticate = function(token, secret, facebook, cb){
+  User.collection.findOne({facebookId:facebook.id}, function(err, user){
+    if(user){return cb(null, user);}
+    user = {facebookId:facebook.id, username:facebook.displayName, displayName:facebook.dispalyName, type:'facebook'};
+    User.collection.save(user, cb);
+  });
+};
+
 User.find = function(filter, cb){
   User.collection.find(filter).toArray(cb);
 };
