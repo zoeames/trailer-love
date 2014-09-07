@@ -9,7 +9,7 @@ config.twitter = {
 };
 
 config.google = {
-  clientId : '417548404177-bmk48tavbdoq45cuaeep4sfqn0f4jb9v.apps.googleusercontent.com',
+  clientId : '876020586432-a9amks7dp6skpv4li0mkq0h5q9d3013i.apps.googleusercontent.com',
   clientSecret: process.env.GOOGLE_SECRET,
   callbackUrl : 'http://matt-vm.com:3333/auth/google/callback'
 };

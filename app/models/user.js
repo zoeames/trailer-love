@@ -31,12 +31,22 @@ User.register = function(o, cb){
   });
 };
 
-User.authenticate = function(o, cb){
-  User.collection.findOne({email:o.email}, function(err, user){
+
+User.localAuthenticate = function(email, password, cb){
+  User.collection.findOne({email:email}, function(err, user){
     if(!user){return cb();}
-    var isOk = bcrypt.compareSync(o.password, user.password);
+    var isOk = bcrypt.compareSync(password, user.password);
     if(!isOk){return cb();}
-    cb(user);
+    cb(null, user);
+  });
+};
+
+User.googleAuthenticate = function(token, secret, google, cb){
+  console.log(google);
+  User.collection.findOne({googleId:google.id}, function(err, user){
+    if(user){return cb(null, user);}
+    user = {googleId:google.id, displayName:google.displayName, type:'google'};
+    User.collection.save(user, cb);
   });
 };
 

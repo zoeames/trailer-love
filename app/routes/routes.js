@@ -7,6 +7,9 @@ var morgan         = require('morgan'),
     session        = require('express-session'),
     RedisStore     = require('connect-redis')(session),
     security       = require('../lib/security'),
+    passportConfig = require('../lib/passport/config'),
+    passport       = require('passport'),
+    flash          = require('connect-flash'),
     debug          = require('../lib/debug'),
     home           = require('../controllers/home'),
     users          = require('../controllers/users'),
@@ -20,15 +23,19 @@ module.exports = function(app, express){
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(methodOverride());
   app.use(session({store:new RedisStore(), secret:'my super secret key', resave:true, saveUninitialized:true, cookie:{maxAge:null}}));
+  app.use(flash());
+  passportConfig(passport, app);
 
-  app.use(security.authenticate);
+  app.use(security.locals);
   app.use(debug.info);
 
   app.get('/', home.index);
   app.get('/register', users.new);
   app.post('/register', users.create);
   app.get('/login', users.login);
-  app.post('/login', users.authenticate);
+  app.post('/login', passport.authenticate('local', {successRedirect:'/', failureRedirect:'/login'}));
+  app.get('/auth/google', passport.authenticate('google',  {scope: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/plus.profile.emails.read']}));
+  app.get('/auth/google/callback', passport.authenticate('google', {successRedirect:'/', failureRedirect:'/login'}));
 
   app.use(security.bounce);
   app.delete('/logout', users.logout);

@@ -1,14 +1,15 @@
 'use strict';
 
-var User = require('../models/user');
 
-exports.authenticate = function(req, res, next){
-  if(!req.session.userId){return next();}
+exports.locals = function(req, res, next){
+  res.locals.user = req.user;
+  res.locals.flash = {};
 
-  User.findById(req.session.userId, function(err, user){
-    res.locals.user = user;
-    next();
+  var keys = Object.keys(req.session.flash || {});
+  keys.forEach(function(key){
+    res.locals.flash[key] = req.flash(key);
   });
+  next();
 };
 
 exports.bounce = function(req, res, next){
