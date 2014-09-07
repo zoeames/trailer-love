@@ -1,22 +1,22 @@
 extends ../shared/template
 block content
-
-  h2 Find Love
-  #map
-  table.table.table-striped.table-hover.table-bordered
-    thead
-      tr
-        th Name
-        th Location
-        th Photo
-        th About Me
-    tbody
-      each user in users
+  h2.animated.flip Find Love
+  #map.animated.zoomInDown
+  .panel
+    table.table.table-striped.table-hover.table-bordered
+      thead
         tr
-          td: a.btn.btn-primary.outline-inward(href='/users/#{user._id}')= user.name
-          td= user.location.name
-          td#image.img.thumbnail(style='background-image:url("#{user.profilePic}")')
-          td= user.aboutMe
+          th Name
+          th Location
+          th Photo
+          th About Me
+      tbody
+        each user in users
+          tr(data-loc=user.location.name, data-lat=user.location.lat, data-lng=user.location.lng)
+            td: a.btn.btn-primary.outline-inward(href='/users/#{user._id}')= user.name
+            td= user.location.name
+            td#imageIndex.img.thumbnail(style='background-image:url("#{user.profilePic}")')
+            td= user.aboutMe
 
-  block scripts
-    script(src='/js/user/user.js')
+    block scripts
+      script(src='/js/user/user.js')

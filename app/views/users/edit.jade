@@ -3,17 +3,21 @@ extends ../shared/template
 block content
   h2 Edit Profile
   .row
-    .col-xs-6
+    .col-xs-4
+    .col-xs-4
       form(role='form', method='post', action='/profile')
         input(type='hidden', name='_method', value='put')
-        .radio
-          label
-            input(type='radio' name='public' value='public' checked=user.isVisible)
-            span Public
-        .radio
-          label
-            input(type='radio' name='public' value='private', checked=!user.isVisible)
-            span Private
+        .panel-heading
+          h2 Edit Profile
+        .panel
+          .radio
+            label
+              input(type='radio' name='public' value='public' checked=user.isVisible)
+              span Public
+          .radio
+            label
+              input(type='radio' name='public' value='private', checked=!user.isVisible)
+              span Private
         .form-group
           label(for='email') Email
           input.form-control#email(type='email', name='email', value=user.email, autofocus=true)
@@ -37,7 +41,7 @@ block content
           input.form-control#loc(type='text', name='loc', value=user.location.name)
           input.form-control#lat(type='hidden', name='lat')
           input.form-control#lng(type='hidden', name='lng')
-          button.btn.btn-success(type='submit') Edit Profile
-    .col-xs-6
+          button.editEdit.bubble-float-top.btn.btn-success(type='submit') Edit Profile
+    .col-xs-4
 
 block scripts

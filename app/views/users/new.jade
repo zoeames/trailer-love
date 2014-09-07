@@ -1,9 +1,10 @@
 extends ../shared/template
 block content
-  h2 Register
+  h2.animated.fadeInDown Register
   .row
-    .col-xs-6
-      form(role='form', method='post', action='/register')
+    .col-xs-4
+    .col-xs-4
+      form.animated.fadeInUp(role='form', method='post', action='/register')
         .form-group
           label(for='email') Email
           input.form-control#email(type='email', name='email', autofocus=true)
@@ -11,7 +12,7 @@ block content
           label(for='password') Password
           input.form-control#password(type='password', name='password')
         button.btn.btn-primary(type='submit') Submit
-    .col-xs-6
+    .col-xs-4
 
 block scripts
 

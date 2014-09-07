@@ -3,11 +3,18 @@ block content
   .row
     .col-xs-12
       h2= client.email
-      h5= client.aboutMe
   .row
+    .col-xs-5
     .col-xs-2
       #image.img.thumbnail(style='background-image:url("#{client.profilePic}")')
-    .col-xs-10
+    .col-xs-5
+  .row
+    .col-xs-4
+    .col-xs-4
+      .aboutMe
+        h3 About Me
+        h5= user.aboutMe
+    .col-xs-4
   .row
     .col-xs-12
       table.table.table-striped.table-hover.table-bordered
