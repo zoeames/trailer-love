@@ -2,16 +2,16 @@ extends ../shared/template
 block content
   .row
     .col-xs-12
-      h1 Inbox
+      h1 Message Inbox
   .row
     .col-xs-2
     .col-xs-8
       table.table.table-condensed.table-hover
         thead
           tr
-            th Read?
+            th
             th From
-            th Sent
+            th Date
             th Message
         tbody
           each message in messages
@@ -20,9 +20,7 @@ block content
                 span.glyphicon(class=(!message.isRead === true ? 'glyphicon-envelope' : 'glyphicon-ok'))
               td: a(href='/messages/#{message._id}')= message.from
               td=moment(message.sent).format('DD MMM, YYYY')
-              td: a(href='/messages/#{message._id}')= message.body.slice(0, 10) + ' ...'
-
-        .col-xs-2
-
+              td: a(href='/messages/#{message._id}')= message.body.slice(0, 10) + ' ....'
+        .col.xs-2
 
 block scripts
