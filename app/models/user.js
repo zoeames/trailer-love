@@ -25,6 +25,9 @@ User.findById = function(id, cb){
   });
 };
 
+
+
+
 User.register = function(o, cb){
   User.collection.findOne({email:o.email}, function(err, user){
     if(user){return cb();}

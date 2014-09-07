@@ -80,7 +80,12 @@ exports.show = function(req,res){
 };
 
 exports.send = function(req, res){
-  User.findById(req.params.userId, function(err, client){
+  console.log('>>>>>>>>> CONTROLLER - send - RES', res);
+  // senderId = res.locals.user._id
+  //receiverId =???????
+  //debugger;
+  User.findById(res.locals.user._id, function(err, client){
+    console.log('>>>>>>>>> CONTROLLER - send - req.params.userId: ', req.params.userId);
     console.log('>>>>>>>>> CONTROLLER - send - client: ', client);
     console.log('>>>>>>>>> CONTROLLER - send - req.body: ', req.body);
     console.log('>>>>>>>>> CONTROLLER - send - res.locals: ', res.locals);
@@ -95,7 +100,8 @@ exports.messages = function(req, res){
   console.log('>>>>  fAMBR - req.params.id: ', req.params.id);
   Message.findAllMessagesByReceiverId(req.params.id, function(err, messages){
     console.log('>>>>  fAMBR - messages: ', messages);
-    res.render('users/msgList', {messages:messages, moment:moment});
+    res.render('users/messages', {messages:messages});
   });
 };
+
 
