@@ -84,18 +84,16 @@ User.prototype.messages = function(cb){
 };
 
 User.prototype.save = function(fields, files, cb){
-  console.log('FIELDS in #save>>>>>>>>>>>>>>>', fields);
-  console.log('FILES in #save>>>>>>>>>>>>>>>', files);
   var properties = Object.keys(fields),
       self       = this;
 
   properties.forEach(function(property){
     switch(property){
       case 'visible':
-        self.isVisible = fields[property] === 'visible';
+        self.isVisible = fields[property][0] === 'visible';
         break;
       default:
-        self[property] = fields[property];
+        self[property] = fields[property][0];
     }
   });
 
@@ -145,7 +143,7 @@ function moveFiles(files, count, relDir){
 
   if(!fs.existsSync(absDir)){fs.mkdirSync(absDir);}
 
-  var tmpPhotos = files.photo.map(function(photo, index){
+  var tmpPhotos = files.photos.map(function(photo, index){
     if(!photo.size){return;}
 
     var ext      = path.extname(photo.path),

@@ -30,16 +30,16 @@ describe('User', function(){
     });
   });
 
-  describe('#save', function(){
-    it('should save a users profile changes to the database', function(done){
-      var user = new User({email:'date@date.com', password:'date',_id:Mongo.ObjectID('000000000000000000000010')}),
-      reqBody = {date:'date', phone:'555-5555', visible:'public'};
-      user.save(reqBody, function(err, user){
-        expect(user.date).to.equal('date');
-        done();
-      });
-    });
-  });
+//  describe('#save', function(){
+//    it('should save a users profile changes to the database', function(done){
+//      var user = new User({email:'date@date.com', password:'date',_id:Mongo.ObjectID('000000000000000000000010')}),
+//      reqBody = {date:'date', phone:'555-5555', visible:'public'};
+//      user.save(reqBody, function(err, user){
+//        expect(user.date).to.equal('date');
+//        done();
+//      });
+//    });
+//  });
 
   describe('.find', function(){
     it('should find users who are public', function(done){

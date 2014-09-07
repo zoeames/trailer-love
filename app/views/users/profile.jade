@@ -3,10 +3,10 @@ block content
   .row
     .col-xs-12
       h2: a(href='/profile/edit')= user.email
+      h5= user.tagline
       h5= user.aboutMe
   .row
     .col-xs-2
-      a.thumbnail(href='#')
       a.btn.btn-primary(href='/profile/edit') Edit My Profile
       #image.img.thumbnail(style='background-image:url("#{user.profilePic}")')
     .col-xs-10
@@ -22,9 +22,9 @@ block content
           tr
             td= user.email
             td= user.phone
-            td= user.isPublic
+            td= user.isVisible
   .row
     each photo in user.photos
-      #image.img.thumbnail(style='background-image:url("#{user.photo}")')
+      .img.thumbnail#photo(style='background-image:url(#{photo});')
 
 block scripts

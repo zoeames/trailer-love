@@ -4,8 +4,8 @@ block content
   h2 Edit Profile
   .row
     .col-xs-6
-      form(role='form', method='post', action='/profile')
-        input(type='hidden', name='_method', value='put')
+      form(role='form', method='post', action='/profile', enctype='multipart/form-data')
+        input(type='hidden', name='_method', value='post')
         .radio
           label
             input(type='radio' name='public' value='public' checked=user.isVisible)
@@ -21,11 +21,11 @@ block content
           label(for='phone') Phone
           input.form-control#phone(type='tel', name='phone', value=user.phone)
         .form-group
-          label(for='photo') Profile Picture
-          input.form-control#photo(type='text', name='photo', value=user.profilePic)
+          label(for='profilePic') Profile Picture
+          input.form-control#profilePic(type='text', name='profilePic', value=user.profilePic)
         .form-group
-          label(for='photo') Photos
-          input.form-control#photo(type='file', name='photo', multiple=true)
+          label(for='photos') Photos
+          input.form-control#photos(type='file', name='photos', multiple=true)
         .form-group
           label(for='tagline') Tagline
           input.form-control#tagline(type='text', name='tagline', value=user.tagline)
@@ -37,7 +37,8 @@ block content
           input.form-control#loc(type='text', name='loc', value=user.location.name)
           input.form-control#lat(type='hidden', name='lat')
           input.form-control#lng(type='hidden', name='lng')
-          button.btn.btn-success(type='submit') Edit Profile
+
+        button.btn.btn-success(type='submit') Edit Profile
     .col-xs-6
 
 block scripts
