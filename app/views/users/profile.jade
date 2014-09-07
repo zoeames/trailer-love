@@ -23,5 +23,8 @@ block content
             td= user.email
             td= user.phone
             td= user.isPublic
+  .row
+    each photo in user.photos
+      #image.img.thumbnail(style='background-image:url("#{user.photo}")')
 
 block scripts

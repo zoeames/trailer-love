@@ -32,5 +32,8 @@ block content
         #formButton
         button.btn.btn-primary.btn-sm(type='submit') Send Message
     .col-xs-3
+  .row
+    each photo in client.photos
+      #image.img.thumbnail(style='background-image:url("#{client.photo}")')
 
 block scripts
