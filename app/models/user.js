@@ -5,8 +5,8 @@ var bcrypt  = require('bcrypt'),
     _       = require('underscore-contrib'),
     fs      = require('fs'),
     path    = require('path'),
-    twilio  = require('twilio'),
-    Mailgun = require('mailgun-js'),
+   // twilio  = require('twilio'),
+    //Mailgun = require('mailgun-js'),
     Message = require('./message');
 
 function User(){
@@ -31,6 +31,14 @@ User.register = function(o, cb){
     o.password = bcrypt.hashSync(o.password, 10);
     o.photos = ['/img/welcome.jpg'];
     User.collection.save(o, cb);
+    //  console.log('O.EMAIL', o.email);
+    //  User.find({email:o.email}, function(err, newUser){
+       // console.log('NEWUSER', newUser);
+       // var bubs = Mongo.ObjectID('000000000000000000000001');
+       // Message.send(bubs, newUser._id, 'Welcome to Trailer-Love!!!', function(){
+      //    cb();
+      //  });
+     // });
   });
 };
 
@@ -75,10 +83,10 @@ User.find = function(filter, cb){
 User.findOne = function(filter, cb){
   User.collection.findOne(filter, cb);
 };
-
+/*
 User.prototype.unread = function(cb){
   Message.unread(this._id, cb);
-};
+};*/
 
 User.prototype.messages = function(cb){
   Message.messages(this._id, cb);
@@ -100,38 +108,7 @@ User.prototype.save = function(fields, files, cb){
   User.collection.save(this, cb);
 };
 
-User.prototype.send = function(receiver, obj, cb){
-  switch(obj.mtype){
-    case 'text':
-      sendText(receiver.phone, obj.message, cb);
-      break;
-    case 'email':
-      sendEmail(this.email, receiver.email, 'Message from Facebook', obj.message, cb);
-      break;
-    case 'internal':
-      Message.send(this._id, receiver._id, obj.message, cb);
-  }
-};
-
 module.exports = User;
-
-function sendText(to, body, cb){
-  if(!to){return cb();}
-
-  var accountSid = process.env.TWSID,
-      authToken  = process.env.TWTOK,
-      from       = process.env.FROM,
-      client     = twilio(accountSid, authToken);
-
-  client.messages.create({to:to, from:from, body:body}, cb);
-}
-
-function sendEmail(from, to, subject, message, cb){
-  var mailgun = new Mailgun({apiKey:process.env.MGKEY, domain:process.env.MGDOM}),
-      data   = {from:from, to:to, subject:subject, text:message};
-
-  mailgun.messages().send(data, cb);
-}
 
 function moveFiles(files, count, relDir){
   var baseDir = __dirname + '/../static',
@@ -153,4 +130,3 @@ function moveFiles(files, count, relDir){
 
   return _.compact(tmpPhotos);
 }
-

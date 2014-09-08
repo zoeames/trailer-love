@@ -56,7 +56,11 @@ module.exports = function(app, express){
   app.post('/charge', cart.purchase);
 
   app.get('/messages', users.messages);
-  app.post('/messages/:userId', users.send);
+  app.post('/users/:id', users.send);
+
+  app.get('/chasingtail/:id', users.chasingtail);
+  app.post('/users', users.sendShindig);
+  app.get('/shindigs', users.shindigs);
 
   console.log('Express: Routes Loaded');
 };

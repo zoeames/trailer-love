@@ -33,10 +33,10 @@ Message.send = function(senderId, receiverId, message, cb){
   var m = new Message(senderId, receiverId, message);
   Message.collection.save(m, cb);
 };
-
+/*
 Message.unread = function(receiverId, cb){
   Message.collection.find({receiverId:receiverId, isRead:false}).count(cb);
-};
+};*/
 
 Message.findAllMessagesByReceiverId = function(receiverId, cb){
   console.log('>>>>>>>  MESSAGE.MESSAGES - receiverId: ', receiverId);
