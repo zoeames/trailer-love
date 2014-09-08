@@ -105,7 +105,6 @@ exports.chasingtail = function(req, res){
 };
 
 exports.sendShindig = function(req, res){
-  console.log('>>>>>>>>> CONTROLLER - send - REQ: ', req.params);
   User.findById(req.params, function(err, client){
     console.log('>>>>>>>>> CONTROLLER - send - client: ', client);
     console.log('>>>>>>>>> CONTROLLER - send - MESSAGE: ', req.body.shindig);
