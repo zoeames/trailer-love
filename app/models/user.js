@@ -30,16 +30,15 @@ User.register = function(o, cb){
     if(user){return cb();}
     o.password = bcrypt.hashSync(o.password, 10);
     o.photos = ['/img/welcome.jpg'];
-    User.collection.save(o, function(){
-      console.log('O.EMAIL', o.email);
-      User.find({email:o.email}, function(err, newUser){
-        console.log('NEWUSER', newUser);
-        var bubs = Mongo.ObjectID('000000000000000000000001');
-        Message.send(bubs, newUser._id, 'Welcome to Trailer-Love!!!', function(){
-          cb();
-        });
-      });
-    });
+    User.collection.save(o, cb);
+    //  console.log('O.EMAIL', o.email);
+    //  User.find({email:o.email}, function(err, newUser){
+       // console.log('NEWUSER', newUser);
+       // var bubs = Mongo.ObjectID('000000000000000000000001');
+       // Message.send(bubs, newUser._id, 'Welcome to Trailer-Love!!!', function(){
+      //    cb();
+      //  });
+     // });
   });
 };
 
@@ -84,10 +83,10 @@ User.find = function(filter, cb){
 User.findOne = function(filter, cb){
   User.collection.findOne(filter, cb);
 };
-
+/*
 User.prototype.unread = function(cb){
   Message.unread(this._id, cb);
-};
+};*/
 
 User.prototype.messages = function(cb){
   Message.messages(this._id, cb);

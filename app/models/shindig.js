@@ -33,10 +33,10 @@ Shindig.send = function(senderId, receiverId, shindig, cb){
   var m = new Shindig(senderId, receiverId, shindig);
   Shindig.collection.save(m, cb);
 };
-
+/*
 Shindig.unread = function(receiverId, cb){
   Shindig.collection.find({receiverId:receiverId, isRead:false}).count(cb);
-};
+};*/
 
 Shindig.findAllShindigsByReceiverId = function(receiverId, cb){
   console.log('>>>>>>>  Shindig.Shindig - receiverId: ', receiverId);
