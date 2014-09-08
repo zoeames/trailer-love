@@ -2,7 +2,7 @@
 
 var User    = require('../models/user'),
     Message = require('../models/message'),
-//    moment  = require('moment'),
+    moment  = require('moment'),
     mp      = require('multiparty');
 
 exports.new = function(req, res){
@@ -80,27 +80,27 @@ exports.show = function(req,res){
 };
 
 exports.send = function(req, res){
-  console.log('>>>>>>>>> CONTROLLER - send - RES', res);
-  // senderId = res.locals.user._id
-  //receiverId =???????
-  //debugger;
-  User.findById(res.locals.user._id, function(err, client){
-    console.log('>>>>>>>>> CONTROLLER - send - req.params.userId: ', req.params.userId);
+  console.log('>>>>>>>>> CONTROLLER - send - REQ', req.params.id);
+  console.log('>>>>>>>>> CONTROLLER - send - REQ.body', req.body);
+  //console.log('>>>>>>>>> CONTROLLER - send - res.locals: ', res.locals);
+  User.findById(req.params.id, function(err, client){
+   // console.log('>>>>>>>>> CONTROLLER - send - req.params.userId: ', req.params.userId);
     console.log('>>>>>>>>> CONTROLLER - send - client: ', client);
-    console.log('>>>>>>>>> CONTROLLER - send - req.body: ', req.body);
-    console.log('>>>>>>>>> CONTROLLER - send - res.locals: ', res.locals);
-   // debugger;
-    res.locals.user.send(client, req.body, function(){
-      res.render('users', {client:client});
+    //console.log('>>>>>>>>> CONTROLLER - send - req.body: ', req.body);
+    //console.log('>>>>>>>>> CONTROLLER - send - res.locals: ', res.locals);
+    Message.send(res.locals.user._id, client._id, req.body.message, function(){
+      res.redirect('/users');
     });
   });
 };
 
 exports.messages = function(req, res){
-  console.log('>>>>  fAMBR - req.params.id: ', req.params.id);
-  Message.findAllMessagesByReceiverId(req.params.id, function(err, messages){
-    console.log('>>>>  fAMBR - messages: ', messages);
-    res.render('users/messages', {messages:messages});
+  //console.log('>>>>  fAMBR - req.params.id: ', req.params.id);
+  Message.findAllMessagesByReceiverId(res.locals.user._id, function(err, messages){
+    User.findById(messages[0].senderId, function(err, sender){
+      //console.log('>>>>  fAMBR - messages: ', messages);
+      res.render('users/messages', {sender:sender, messages:messages, moment:moment});
+    });
   });
 };
 

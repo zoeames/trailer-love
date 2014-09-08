@@ -2,7 +2,7 @@ extends ../shared/template
 block content
   .row
     .col-xs-12
-      h1 Message Inbox
+      h5 Message Inbox
   .row
     .col-xs-2
     .col-xs-8
@@ -16,11 +16,9 @@ block content
         tbody
           each message in messages
             tr
-              td
-                span.glyphicon(class=(!message.isRead === true ? 'glyphicon-envelope' : 'glyphicon-ok'))
-              td: a(href='/messages/#{message._id}')= message.from
-              td=moment(message.sent).format('DD MMM, YYYY')
-              td: a(href='/messages/#{message._id}')= message.body.slice(0, 10) + ' ....'
+              td= sender.email
+              td= moment(message.date).format('DD MMM, YYYY')
+              td= message.message
         .col.xs-2
 
 block scripts

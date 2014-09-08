@@ -2,7 +2,7 @@
 
 'use strict';
 
-process.env.DB   = 'trailer-test';
+process.env.DB   = 'trailer-love';
 
 var expect  = require('chai').expect,
     cp      = require('child_process'),
@@ -76,20 +76,6 @@ describe('users', function(){
     });
   });
 
-//  describe('post /profile', function(){
-//    it('should edit the profile', function(done){
-//      request(app)
-//      .post('/profile')
-//      .send('_method=put&visible=private&email=bob%40aol.com&phone=5555555555&photo=bob.jpg&tagline=here%27s+bob.+&about=Hey.+I%27m+a+fun+guy.+Let%27s+have+mountain+dew+and+get+to+know+each+other%21')
-//      .set('cookie', cookie)
-//      .end(function(err, res){
-//        expect(res.status).to.equal(302);
-//        expect(res.headers.location).to.equal('/profile');
-//        done();
-//      });
-//    });
-//  });
-
   describe('get /users', function(){
     it('should show all public users', function(done){
       request(app)
@@ -126,7 +112,7 @@ describe('users', function(){
     });
   });
 
-  describe('get /messages', function(){
+ /* describe('get /messages', function(){
     it('should return the messages page', function(done){
       request(app)
       .get('/messages')
@@ -137,33 +123,20 @@ describe('users', function(){
         done();
       });
     });
+  });*/
+
+  describe('post /users/000000000000000000000002', function(){
+    it('should send a user a message', function(done){
+      request(app)
+      .post('/users/000000000000000000000001')
+      .set('cookie', cookie)
+      .send('message=hi')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        done();
+      });
+    });
   });
-
-//  describe('post /messages/000000000000000000000002', function(){
-//    it('should send a user a message', function(done){
-//      request(app)
-//      .post('/messages/000000000000000000000001')
-//      .set('cookie', cookie)
-//      .send('message=hi')
-//      .end(function(err, res){
-//        expect(res.status).to.equal(302);
-//        done();
-//      });
-//    });
-//  });
-
-//  describe('get /messages/messageId', function(){
-//    it('should return a message for the user', function(done){
-//      request(app)
-//      .get('/messages/000000000000000000000001')
-//      .set('cookie', cookie)
-//      .end(function(err, res){
-//        expect(res.status).to.equal(200);
-//        expect(res.text).to.include('hi');
-//        done();
-//     });
-//    });
-//  });
 
   describe('post /cart', function(){
     it('should swnd a post to cart', function(done){
