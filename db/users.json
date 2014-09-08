@@ -14,7 +14,7 @@
   ],
   "favorites" : ["Sally", "Sue", "Sara"],
   "trailerSize" : {"sqFeet":100, "bedrooms":1, "bath":1},
-  "tagline" : "I like kitties and partying!",
+  "aboutMe" : "I like kitties and shopping carts.",
   "occupants": ["kitty 1", "kitty 2", "kitty 3"],
   "looks" : "chunky",
   "eye color" : "blue",
