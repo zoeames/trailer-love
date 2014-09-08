@@ -5,8 +5,8 @@ var bcrypt  = require('bcrypt'),
     _       = require('underscore-contrib'),
     fs      = require('fs'),
     path    = require('path'),
-    twilio  = require('twilio'),
-    Mailgun = require('mailgun-js'),
+   // twilio  = require('twilio'),
+    //Mailgun = require('mailgun-js'),
     Message = require('./message');
 
 function User(){
@@ -99,7 +99,7 @@ User.prototype.save = function(fields, files, cb){
   this.isVisible = (this.isVisible === 'true') ? true : false;
   User.collection.save(this, cb);
 };
-
+/*
 User.prototype.send = function(receiver, obj, cb){
   switch(obj.mtype){
     case 'text':
@@ -111,10 +111,10 @@ User.prototype.send = function(receiver, obj, cb){
     case 'internal':
       Message.send(this._id, receiver._id, obj.message, cb);
   }
-};
+};*/
 
 module.exports = User;
-
+/*
 function sendText(to, body, cb){
   if(!to){return cb();}
 
@@ -131,7 +131,7 @@ function sendEmail(from, to, subject, message, cb){
       data   = {from:from, to:to, subject:subject, text:message};
 
   mailgun.messages().send(data, cb);
-}
+}*/
 
 function moveFiles(files, count, relDir){
   var baseDir = __dirname + '/../static',
@@ -153,4 +153,3 @@ function moveFiles(files, count, relDir){
 
   return _.compact(tmpPhotos);
 }
-
