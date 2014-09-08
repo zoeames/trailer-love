@@ -25,13 +25,11 @@ User.findById = function(id, cb){
   });
 };
 
-
-
-
 User.register = function(o, cb){
   User.collection.findOne({email:o.email}, function(err, user){
     if(user){return cb();}
     o.password = bcrypt.hashSync(o.password, 10);
+    o.photos = ['/img/welcome.jpg'];
     User.collection.save(o, cb);
   });
 };
@@ -91,19 +89,14 @@ User.prototype.save = function(fields, files, cb){
       self       = this;
 
   properties.forEach(function(property){
-    switch(property){
-      case 'visible':
-        self.isVisible = fields[property][0] === 'visible';
-        break;
-      default:
-        self[property] = fields[property][0];
-    }
+    self[property] = fields[property][0];
   });
 
   var oldphotos = this.photos,
       newphotos = moveFiles(files, oldphotos.length, '/img/' + this._id);
   this.photos = oldphotos.concat(newphotos);
-
+  this.location = {name:this.loc, lat:this.lat, lng:this.lng};
+  this.isVisible = (this.isVisible === 'true') ? true : false;
   User.collection.save(this, cb);
 };
 
@@ -146,7 +139,7 @@ function moveFiles(files, count, relDir){
 
   if(!fs.existsSync(absDir)){fs.mkdirSync(absDir);}
 
-  var tmpPhotos = files.photo.map(function(photo, index){
+  var tmpPhotos = files.photos.map(function(photo, index){
     if(!photo.size){return;}
 
     var ext      = path.extname(photo.path),
