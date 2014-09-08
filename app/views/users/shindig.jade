@@ -1,3 +1,23 @@
 extends ../shared/template
 block content
-  Invite to ShingDig
+  .row
+    .col-xs-12
+      h2= client.email
+  .row
+    .col-xs-5
+    .col-xs-2
+      #image.img.thumbnail(style='background-image:url("#{client.profilePic}")')
+    .col-xs-5
+  .row
+    .col-xs-3
+    .col-xs-6
+      form(role='form', method='post', action='/users')
+        .form-group
+          label(for='shindig') Invite #{client.name} on a Shindig:
+          textarea.form-control#message(name='shindig')
+        .form-group
+        #formButton
+        button.btn.btn-primary.btn-sm(type='submit') Chase Tail!
+    .col-xs-3
+
+block scripts

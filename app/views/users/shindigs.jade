@@ -1,0 +1,24 @@
+extends ../shared/template
+block content
+  .row
+    .col-xs-12
+      h5 Shindigs
+  .row
+    .col-xs-2
+    .col-xs-8
+      table.table.table-condensed.table-hover
+        thead
+          tr
+            th
+            th From
+            th Date
+            th Message
+        tbody
+          each shindig in shindigs
+            tr
+              td= sender.email
+              td= moment(shindig.date).format('DD MMM, YYYY')
+              td= shindig.shindig
+        .col.xs-2
+
+block scripts

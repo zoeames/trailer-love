@@ -2,6 +2,7 @@
 
 var User    = require('../models/user'),
     Message = require('../models/message'),
+    Shindig = require('../models/shindig'),
     moment  = require('moment'),
     mp      = require('multiparty');
 
@@ -80,14 +81,8 @@ exports.show = function(req,res){
 };
 
 exports.send = function(req, res){
-  console.log('>>>>>>>>> CONTROLLER - send - REQ', req.params.id);
-  console.log('>>>>>>>>> CONTROLLER - send - REQ.body', req.body);
-  //console.log('>>>>>>>>> CONTROLLER - send - res.locals: ', res.locals);
   User.findById(req.params.id, function(err, client){
-   // console.log('>>>>>>>>> CONTROLLER - send - req.params.userId: ', req.params.userId);
-    console.log('>>>>>>>>> CONTROLLER - send - client: ', client);
-    //console.log('>>>>>>>>> CONTROLLER - send - req.body: ', req.body);
-    //console.log('>>>>>>>>> CONTROLLER - send - res.locals: ', res.locals);
+    //console.log('>>>>>>>>> CONTROLLER - send - client: ', client);
     Message.send(res.locals.user._id, client._id, req.body.message, function(){
       res.redirect('/users');
     });
@@ -95,11 +90,36 @@ exports.send = function(req, res){
 };
 
 exports.messages = function(req, res){
-  //console.log('>>>>  fAMBR - req.params.id: ', req.params.id);
   Message.findAllMessagesByReceiverId(res.locals.user._id, function(err, messages){
     User.findById(messages[0].senderId, function(err, sender){
-      //console.log('>>>>  fAMBR - messages: ', messages);
       res.render('users/messages', {sender:sender, messages:messages, moment:moment});
+    });
+  });
+};
+
+exports.chasingtail = function(req, res){
+  console.log('REQ PARAMS', req.params.id);
+  User.findById(req.params.id, function(err, client){
+    console.log('CLIENT CLIENT', client);
+    res.render('users/shindig', {client:client});
+  });
+};
+
+exports.sendShindig = function(req, res){
+  console.log('>>>>>>>>> CONTROLLER - send - REQ: ', req.params);
+  User.findById(req.params, function(err, client){
+    console.log('>>>>>>>>> CONTROLLER - send - client: ', client);
+    console.log('>>>>>>>>> CONTROLLER - send - MESSAGE: ', req.body.shindig);
+    Shindig.send(res.locals.user._id, client._id, req.body.shindig, function(){
+      res.redirect('/users');
+    });
+  });
+};
+
+exports.shindigs = function(req, res){
+  Shindig.findAllShindigsByReceiverId(res.locals.user._id, function(err, shindigs){
+    User.findById(shindigs[0].senderId, function(err, sender){
+      res.render('users/shindigs', {sender:sender, shindigs:shindigs, moment:moment});
     });
   });
 };
