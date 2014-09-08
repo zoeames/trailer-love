@@ -14,7 +14,7 @@
   ],
   "favorites" : ["Sally", "Sue", "Sara"],
   "trailerSize" : {"sqFeet":100, "bedrooms":1, "bath":1},
-  "tagline" : "I like kitties and partying!",
+  "aboutMe" : "I like kitties and shopping carts.",
   "occupants": ["kitty 1", "kitty 2", "kitty 3"],
   "looks" : "chunky",
   "eye color" : "blue",
@@ -74,3 +74,78 @@
   "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2"
 }
 
+{
+  "_id" : {"$oid":"000000000000000000000004"},
+  "name" : "Sally",
+  "location" : {"name":"Knoxville, TN USA", "lat":35.9584634, "lng":-83.9250825},
+  "email" : "sally@aol.com",
+  "phone" : 5551231237,
+  "isVisible" : true,
+  "photos": [
+    "http://chivethethrottle.files.wordpress.com/2011/09/dirty-500-81513117wtmk.jpg",
+    "http://malialitman.files.wordpress.com/2012/10/redneck-woman-pregnant.jpg",
+    "http://www.featurepics.com/FI/Thumb300/20100603/Redneck-Woman-Gun-1557359.jpg",
+    "http://3.bp.blogspot.com/--0NqydbqJGI/TcQk9SYrMHI/AAAAAAAAAuQ/5NGV_3BL1sE/s400/redneck%2Bwoman.jpg"
+      ],
+  "favorites" : ["Bubbles", "Julian", "Ricky"],
+  "trailerSize" : {"sqFeet":300, "bedrooms":1, "bath":1},
+  "aboutMe" : "I'm country!",
+  "occupants": ["Sally"],
+  "looks" : "lean and mean",
+  "eye color" : "brown",
+  "hair color" : "black",
+  "gifts" : [{"_id":"000000000000000000000001", "giverId":"000000000000000000000002"}],
+  "profilePic" : "http://w248.photobucket.com/albums/gg186/SugahPlum2/RedneckWoman6.jpg",
+  "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2"
+}
+
+
+{
+  "_id" : {"$oid":"000000000000000000000005"},
+  "name" : "Sue",
+  "location" : {"name":"Brentwood, TN USA", "lat":35.988634, "lng":-86.7783884},
+  "email" : "sue@aol.com",
+  "phone" : 5551231238,
+  "isVisible" : true,
+  "photos": [
+    "http://breathlessmoments.com/redneck-woman-halloween-costume-22.jpg",
+    "http://moldychum.typepad.com/photos/uncategorized/2008/09/03/kissme1.jpg",
+    "http://3.bp.blogspot.com/-Jx6myElOHtg/UPzWq7BIrCI/AAAAAAAAMWk/kJP3bnVXVS8/s400/DSC_0097.JPG",
+    "http://i.ytimg.com/vi/Iobw_bZe4ug/0.jpg"
+      ],
+  "favorites" : ["Bubbles", "Ricky", "Julian"],
+  "trailerSize" : {"sqFeet":150, "bedrooms":1, "bath":1},
+  "aboutMe" : "Yippy do da day!",
+  "occupants": ["Sue"],
+  "looks" : "country",
+  "eye color" : "blue",
+  "hair color" : "blonde",
+  "gifts" : [{"_id":"000000000000000000000001", "giverId":"000000000000000000000002"}],
+  "profilePic" : "http://1000uglypeople.com/wp-content/uploads/Redneck-Girl-Ugly-Woman-With-Bad-Teeth.jpg",
+  "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2"
+}
+
+{
+  "_id" : {"$oid":"000000000000000000000006"},
+  "name" : "Lucy",
+  "location" : {"name":"Brentwood, TN USA", "lat":35.742531, "lng":-86.9236324},
+  "email" : "lucy@aol.com",
+  "phone" : 5551231239,
+  "isVisible" : true,
+  "photos": [
+    "http://breathlessmoments.com/ugly-redneck-pictures-216.jpg",
+    "http://i.istockimg.com/file_thumbview_approve/12029499/2/stock-photo-12029499-isolated-laughing-redneck-woman-with-shotgun.jpg",
+    "http://breathlessmoments.com/redneck-costume-ideas-for-women-23.jpg",
+    "http://www.dandelion-films.com/redneck-woman-costume-10.jpg"
+      ],
+  "favorites" : ["Bubbles", "Ricky", "Julian"],
+  "trailerSize" : {"sqFeet":450, "bedrooms":0, "bath":1},
+  "aboutMe" : "Blippidy Bibbidy Do Blah!",
+  "occupants": ["Lucy"],
+  "looks" : "country",
+  "eye color" : "blue",
+  "hair color" : "blonde",
+  "gifts" : [{"_id":"000000000000000000000001", "giverId":"000000000000000000000002"}],
+  "profilePic" : "http://www.missintense.com/wp-content/uploads/2013/05/muddy2.jpg",
+  "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2"
+}
