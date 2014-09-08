@@ -82,7 +82,6 @@ exports.show = function(req,res){
 
 exports.send = function(req, res){
   User.findById(req.params.id, function(err, client){
-    //console.log('>>>>>>>>> CONTROLLER - send - client: ', client);
     Message.send(res.locals.user._id, client._id, req.body.message, function(){
       res.redirect('/users');
     });
