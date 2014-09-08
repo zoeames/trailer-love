@@ -14,9 +14,9 @@ exports.login = function(req, res){
 };
 
 exports.logout = function(req, res){
-  req.session.destroy(function(){
-    res.redirect('/');
-  });
+  req.logout();
+  req.flash('notice', 'youre out!');
+  res.redirect('/');
 };
 
 exports.create = function(req, res){

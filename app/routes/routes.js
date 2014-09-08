@@ -14,7 +14,7 @@ var morgan         = require('morgan'),
     home           = require('../controllers/home'),
     users          = require('../controllers/users'),
     gifts          = require('../controllers/gifts'),
-    cart          = require('../controllers/cart');
+    cart           = require('../controllers/cart');
 
 module.exports = function(app, express){
   app.use(morgan('dev'));
@@ -33,19 +33,19 @@ module.exports = function(app, express){
   app.get('/register', users.new);
   app.post('/register', users.create);
   app.get('/login', users.login);
-  app.post('/login', passport.authenticate('local', {successRedirect:'/', failureRedirect:'/login'}));
+  app.post('/login', passport.authenticate('local', {successRedirect:'/', failureRedirect:'/login', successFlash:'You\'re in bro!', failureFlash:'Get out, bozo!'}));
   app.get('/auth/google', passport.authenticate('google',  {scope: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/plus.profile.emails.read']}));
-  app.get('/auth/google/callback', passport.authenticate('google', {successRedirect:'/', failureRedirect:'/login'}));
+  app.get('/auth/google/callback', passport.authenticate('google', {successRedirect:'/', failureRedirect:'/login', successFlash:'You done did signed in wit tha Googs!', failureFlash:'You best fix your Googs!'}));
   app.get('/auth/twitter', passport.authenticate('twitter'));
-  app.get('/auth/twitter/callback', passport.authenticate('twitter', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are in!', failureFlash:'Try again, Bozo!'}));
+  app.get('/auth/twitter/callback', passport.authenticate('twitter', {successRedirect:'/', failureRedirect:'/login', successFlash:'You did a twitts login!', failureFlash:'Try again, Bozo!'}));
   app.get('/auth/facebook', passport.authenticate('facebook'));
-  app.get('/auth/facebook/callback', passport.authenticate('facebook', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are in!', failureFlash:'Try again, Bozo!'}));
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are in with a facebook!', failureFlash:'Try again, Bozo!'}));
   app.use(security.bounce);
   app.delete('/logout', users.logout);
 
   app.get('/profile', users.profile);
   app.get('/profile/edit', users.edit);
-  app.post('/profile', users.update);
+  app.put('/profile', users.update);
   app.get('/users', users.index);
   app.get('/users/:id', users.show);
 
@@ -55,7 +55,7 @@ module.exports = function(app, express){
   app.delete('/cart', cart.destroy);
   app.post('/charge', cart.purchase);
 
-  app.get('/messages', users.messages);
+  app.get('/users/:id/messages', users.messages);
   app.post('/messages/:userId', users.send);
 
   console.log('Express: Routes Loaded');

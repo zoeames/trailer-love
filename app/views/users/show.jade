@@ -27,7 +27,7 @@ block content
           tr
             td= client.email
             td= client.phone
-            td= client.isVisible
+            td= client.isPublic
   .row
     .col-xs-3
     .col-xs-6
@@ -41,6 +41,6 @@ block content
     .col-xs-3
   .row
     each photo in client.photos
-      #image.img.thumbnail(style='background-image:url("#{photo}")')
+      #image.img.thumbnail(style='background-image:url("#{client.photo}")')
 
 block scripts
