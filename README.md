@@ -57,7 +57,7 @@ $ npm test
 ```
 
 ### Contributors
-- [Zoe Ames]()
+- [Zoe Ames](https://github.com/zoeames)
 - [Michael Barreiro]
 - [Matt Keef]
 - [Joy Pratt]
