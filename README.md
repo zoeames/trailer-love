@@ -58,10 +58,10 @@ $ npm test
 
 ### Contributors
 - [Zoe Ames](https://github.com/zoeames)
-- [Michael Barreiro]
-- [Matt Keef]
-- [Joy Pratt]
-- [Dennis Stanley]
+- [Michael Barreiro](https://github.com/MikeBBarreiro)
+- [Matt Keef](https://github.com/mkeef1)
+- [Joy Pratt](https://github.com/JoyP)
+- [Dennis Stanley](https://github.com/tdsjr82)
 
 ### License
 [MIT](LICENSE)
