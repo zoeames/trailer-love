@@ -1,31 +1,46 @@
-## name of project
+## Trailer-Love
 ### Code Badges
 [![Build Status](https://travis-ci.org/JoyP/trailer-love.svg?branch=master)](https://travis-ci.org/JoyP/trailer-love)
 [![Coverage Status](https://coveralls.io/repos/JoyP/trailer-love/badge.png)](https://coveralls.io/r/JoyP/trailer-love)
 
 ### Screenshots
-![Image1](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/one.jpg)
-![Image2](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/two.jpg)
+![Image1](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/trailerlove.png)
 
 ### Description
-Trailer Love
+A trailer park themed dating  site.
 
 ### Models
 ```
-Model 1
+User
 ```
 
 ```
-Model 2
+Shindig
+```
+
+```
+Gift
+```
+
+```
+Message
 ```
 
 ### Database
 ```
-Collecion 1
+Users
 ```
 
 ```
-Collection 2
+Shindigs
+```
+
+```
+Gifts
+```
+
+```
+Messages
 ```
 
 ### Features
@@ -40,7 +55,7 @@ $ npm test
 ```
 
 ### Contributors
-- [Zoe Ames]
+- [Zoe Ames]()
 - [Michael Barreiro]
 - [Matt Keef]
 - [Joy Pratt]
@@ -48,4 +63,3 @@ $ npm test
 
 ### License
 [MIT](LICENSE)
-
