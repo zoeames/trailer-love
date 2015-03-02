@@ -4,7 +4,9 @@
 [![Coverage Status](https://coveralls.io/repos/JoyP/trailer-love/badge.png)](https://coveralls.io/r/JoyP/trailer-love)
 
 ### Screenshots
-![Image1](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/trailerlove.png)
+![Image1](https://raw.githubusercontent.com/zoeames/trailer-love/master/docs/screenshots/trailerlove.png)
+
+
 
 ### Description
 A trailer park themed dating  site.
