@@ -46,9 +46,14 @@ Messages
 ```
 
 ### Features
-- [x] Feature 1
-- [ ] Feature 2
-- [x] Feature 3
+- [x] Users can register
+- [x] Users can login
+- [x] Authentication with Google, Twitter, or Facebook
+- [x] Users can create a new Shindig
+- [x] Users can accept or reject a Shindig
+- [x] Users can send and receive messages to each other
+- [x] Users can send and receive gifts 
+- [ ] Users pay for gifts with stripe
 
 ### Running Tests
 ```bash
